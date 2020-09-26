@@ -4,8 +4,7 @@ services:
     microservice-a:
         container_name: microservice-a
         restart: always
-        build:
-            context: ../../builds/lb4-cli
+        image: microservice-a
         command: 'yarn start'
         ports: 
             - 3000:3000
@@ -17,8 +16,7 @@ services:
     microservice-b:
         container_name: microservice-b
         restart: always
-        build:
-            context: ../../builds/lb4-cli
+        image: microservice-b
         command: 'yarn start'
         ports: 
             - 3001:3000

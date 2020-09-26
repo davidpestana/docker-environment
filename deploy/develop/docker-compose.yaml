@@ -1,13 +1,37 @@
 version: '2'
 
 services: 
+    microservice-a:
+        container_name: microservice-a
+        restart: always
+        build:
+            context: ../../builds/lb4-cli
+        command: 'yarn start'
+        ports: 
+            - 3000:3000
+        volumes: 
+            - ../../source/microservice-a:/app
+
+
+
+    microservice-b:
+        container_name: microservice-b
+        restart: always
+        build:
+            context: ../../builds/lb4-cli
+        command: 'yarn start'
+        ports: 
+            - 3001:3000
+        volumes: 
+            - ../../source/microservice-b:/app
+        
+
     mongo_service:
         restart: always
         image: mongo:latest
         container_name: mongo_container
-
-
-    mongo_service2:
-        restart: always
-        image: mongo:latest
-        container_name: mongo_container2
+        environment:
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
+        volumes:
+            - ../../data/mongo:/data/db      

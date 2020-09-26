@@ -1,0 +1,13 @@
+version: '2'
+
+services: 
+    mongo_service:
+        restart: always
+        image: mongo:latest
+        container_name: mongo_container
+
+
+    mongo_service2:
+        restart: always
+        image: mongo:latest
+        container_name: mongo_container2
